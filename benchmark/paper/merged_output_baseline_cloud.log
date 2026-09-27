@@ -1,0 +1,1478 @@
+CMD: LABEL=n4_v_rate_imb90_r20000_run_1 LOCAL_ORCH=0 NODES=4 WORKER_BANDWIDTHS_MBPS=600,600,600,600 RATE_WEIGHTS=0.9,0.0333333,0.0333333,0.0333333 BASELINE=1 RATE=20000 DURATION=900 WARMUP=240 IN_MEMORY_STORE=1 fab cloudlab --manifest=manifest.xml --latency=100ms --primary-bw=300mbit --log-dir=/home/zpkhor/narwhal-validator/benchmark/exp/results/tps_timeline_baseline_cloud_20260414_015150/n4_v_rate_imb90_r20000_run_1
+[92mStarting CloudLab benchmark[0m
+All SSH hosts: ['hp084.utah.cloudlab.us', 'hp091.utah.cloudlab.us', 'hp069.utah.cloudlab.us', 'hp021.utah.cloudlab.us']
+Killing previous processes...
+Resetting TCP buffers...
+Compiling...
+Distributing binaries to 4 machines...
+Generating configuration files...
+Uploading config files...
+Applying TC QoS shaping...
+TC QoS applied: primary=300000kbps, worker_bws=[600000, 600000, 600000, 600000]kbps
+Starting primaries and workers...
+Waiting for workers to be ready...
+All workers ready.
+Starting clients...
+Running benchmark (900 sec)...
+Stopping processes...
+Downloading logs...
+Parsing logs...
+
+-----------------------------------------
+ SUMMARY:
+-----------------------------------------
+ + CONFIG:
+ Committee size: 4 node(s)
+ Worker(s) per node: 1 worker(s)
+ Input rate: 20,002 tx/s
+ Transaction size: 512 B
+ Benchmark duration: 900.0 s
+ Consensus duration: 541.53 s
+ Commit duration: 539.87 s
+
+
+ + LAST COMMITTED PER VALIDATOR (from primary logs):
+ Validator  Time            Round
+ 0          06:07:07.452     3012
+ 1          06:07:07.490     3012
+ 2          06:07:07.442     3012
+ 3          06:07:07.482     3012
+ + RESULTS:
+ f+1 Commit latency (workers) (mean): 2,152 ms
+ f+1 Commit latency (workers) (p50): 1,973 ms
+ f+1 Commit latency (workers) (p90): 2,419 ms
+ f+1 Commit latency (workers) (p95): 2,583 ms
+ f+1 Commit latency (workers) (p99): 9,802 ms
+
+ Consensus TPS: 19,945 tx/s
+ Consensus BPS: 10,211,640 B/s
+ Committed TPS: 20,006 tx/s
+ Committed BPS: 10,242,926 B/s
+
+ + VALIDATOR LOAD DISTRIBUTION:
+ Validator 0: 9,724,081 tx (90.0%)
+ Validator 1: 360,246 tx (3.3%)
+ Validator 2: 364,539 tx (3.4%)
+ Validator 3: 351,679 tx (3.3%)
+
+ + PER-VALIDATOR COMMIT METRICS:
+ Validator    TPS (tx/s)    Mean (ms)    p95 (ms)    Misses
+ 0            18,012        2,050        2,520       0
+ 1            667           1,822        2,375       0
+ 2            675           2,334        2,866       0
+ 3            651           2,326        6,587       0
+ Overall      20,006        2,061 (wtd)  2,659 (wtd) 0
+
+ + PER-VALIDATOR QUORUM TIMING (ms):
+                    mean            p95             std      
+ Validator       delay    lat    delay    lat    delay    lat
+ 0                 162     50      193     96       22     42
+ 1                   0    103        0    107        0      2
+ 2                   0    103        0    107        0      2
+ 3                   0    102        0    106        0      2
+
+ + PER-STAGE LATENCY BREAKDOWN (mean, ms):
+   Stage                            All
+   Client -> Worker:                  2
+   Worker -> Batch seal:             84
+   Batch seal -> Quorum:            167
+   Quorum -> Processed:               3
+   Processed -> Header:             152
+   Header -> Certified:             200
+   Certified -> Committed:        1,510
+   Sum:                           2,119
+   (n=)                          42,522
+-----------------------------------------
+CMD: LABEL=n4_v_rate_imb90_r50000_run_1 LOCAL_ORCH=0 NODES=4 WORKER_BANDWIDTHS_MBPS=600,600,600,600 RATE_WEIGHTS=0.9,0.0333333,0.0333333,0.0333333 BASELINE=1 RATE=50000 DURATION=900 WARMUP=240 IN_MEMORY_STORE=1 fab cloudlab --manifest=manifest.xml --latency=100ms --primary-bw=300mbit --log-dir=/home/zpkhor/narwhal-validator/benchmark/exp/results/tps_timeline_baseline_cloud_20260414_015150/n4_v_rate_imb90_r50000_run_1
+[92mStarting CloudLab benchmark[0m
+All SSH hosts: ['hp084.utah.cloudlab.us', 'hp091.utah.cloudlab.us', 'hp069.utah.cloudlab.us', 'hp021.utah.cloudlab.us']
+Killing previous processes...
+Resetting TCP buffers...
+Compiling...
+Distributing binaries to 4 machines...
+Generating configuration files...
+Uploading config files...
+Applying TC QoS shaping...
+TC QoS applied: primary=300000kbps, worker_bws=[600000, 600000, 600000, 600000]kbps
+Starting primaries and workers...
+Waiting for workers to be ready...
+All workers ready.
+Starting clients...
+Running benchmark (900 sec)...
+Stopping processes...
+Downloading logs...
+Parsing logs...
+
+-----------------------------------------
+ SUMMARY:
+-----------------------------------------
+ + CONFIG:
+ Committee size: 4 node(s)
+ Worker(s) per node: 1 worker(s)
+ Input rate: 50,002 tx/s
+ Transaction size: 512 B
+ Benchmark duration: 900.0 s
+ Consensus duration: 541.4 s
+ Commit duration: 539.97 s
+
+
+ + LAST COMMITTED PER VALIDATOR (from primary logs):
+ Validator  Time            Round
+ 0          06:22:40.571     3014
+ 1          06:22:40.620     3014
+ 2          06:22:40.571     3014
+ 3          06:22:40.620     3014
+ + RESULTS:
+ f+1 Commit latency (workers) (mean): 2,170 ms
+ f+1 Commit latency (workers) (p50): 1,975 ms
+ f+1 Commit latency (workers) (p90): 2,338 ms
+ f+1 Commit latency (workers) (p95): 2,499 ms
+ f+1 Commit latency (workers) (p99): 10,215 ms
+
+ Consensus TPS: 49,486 tx/s
+ Consensus BPS: 25,336,727 B/s
+ Committed TPS: 49,617 tx/s
+ Committed BPS: 25,403,967 B/s
+
+ + VALIDATOR LOAD DISTRIBUTION:
+ Validator 0: 24,310,691 tx (90.7%)
+ Validator 1: 901,529 tx (3.4%)
+ Validator 2: 906,386 tx (3.4%)
+ Validator 3: 673,053 tx (2.5%)
+
+ + PER-VALIDATOR COMMIT METRICS:
+ Validator    TPS (tx/s)    Mean (ms)    p95 (ms)    Misses
+ 0            45,022        2,044        2,357       0
+ 1            1,670         1,749        2,148       0
+ 2            1,679         1,784        2,189       0
+ 3            1,246         3,208        10,315      0
+ Overall      49,617        2,054 (wtd)  2,544 (wtd) 0
+
+ + PER-VALIDATOR QUORUM TIMING (ms):
+                    mean            p95             std      
+ Validator       delay    lat    delay    lat    delay    lat
+ 0                 235     18      316    106       46     36
+ 1                   0    109        0    114        4      3
+ 2                   1    109        0    113        9      3
+ 3                   2    108        0    113       17      6
+
+ + PER-STAGE LATENCY BREAKDOWN (mean, ms):
+   Stage                            All
+   Client -> Worker:                  7
+   Worker -> Batch seal:             82
+   Batch seal -> Quorum:            224
+   Quorum -> Processed:              14
+   Processed -> Header:             150
+   Header -> Certified:             200
+   Certified -> Committed:        1,432
+   Sum:                           2,109
+   (n=)                          40,125
+-----------------------------------------
+CMD: LABEL=n4_v_rate_imb90_r80000_run_1 LOCAL_ORCH=0 NODES=4 WORKER_BANDWIDTHS_MBPS=600,600,600,600 RATE_WEIGHTS=0.9,0.0333333,0.0333333,0.0333333 BASELINE=1 RATE=80000 DURATION=900 WARMUP=240 IN_MEMORY_STORE=1 fab cloudlab --manifest=manifest.xml --latency=100ms --primary-bw=300mbit --log-dir=/home/zpkhor/narwhal-validator/benchmark/exp/results/tps_timeline_baseline_cloud_20260414_015150/n4_v_rate_imb90_r80000_run_1
+[92mStarting CloudLab benchmark[0m
+All SSH hosts: ['hp084.utah.cloudlab.us', 'hp091.utah.cloudlab.us', 'hp069.utah.cloudlab.us', 'hp021.utah.cloudlab.us']
+Killing previous processes...
+Resetting TCP buffers...
+Compiling...
+Distributing binaries to 4 machines...
+Generating configuration files...
+Uploading config files...
+Applying TC QoS shaping...
+TC QoS applied: primary=300000kbps, worker_bws=[600000, 600000, 600000, 600000]kbps
+Starting primaries and workers...
+Waiting for workers to be ready...
+All workers ready.
+Starting clients...
+Running benchmark (900 sec)...
+Stopping processes...
+Downloading logs...
+Parsing logs...
+
+-----------------------------------------
+ SUMMARY:
+-----------------------------------------
+ + CONFIG:
+ Committee size: 4 node(s)
+ Worker(s) per node: 1 worker(s)
+ Input rate: 80,002 tx/s
+ Transaction size: 512 B
+ Benchmark duration: 900.0 s
+ Consensus duration: 541.32 s
+ Commit duration: 539.67 s
+
+
+ + LAST COMMITTED PER VALIDATOR (from primary logs):
+ Validator  Time            Round
+ 0          06:38:17.745     3016
+ 1          06:38:17.748     3016
+ 2          06:38:17.771     3016
+ 3          06:38:17.783     3016
+ + RESULTS:
+ f+1 Commit latency (workers) (mean): 19,811 ms
+ f+1 Commit latency (workers) (p50): 2,075 ms
+ f+1 Commit latency (workers) (p90): 88,677 ms
+ f+1 Commit latency (workers) (p95): 146,204 ms
+ f+1 Commit latency (workers) (p99): 188,676 ms
+
+ Consensus TPS: 53,642 tx/s
+ Consensus BPS: 27,464,763 B/s
+ Committed TPS: 53,807 tx/s
+ Committed BPS: 27,548,989 B/s
+
+ + VALIDATOR LOAD DISTRIBUTION:
+ Validator 0: 24,663,388 tx (84.9%)
+ Validator 1: 1,440,449 tx (5.0%)
+ Validator 2: 1,458,185 tx (5.0%)
+ Validator 3: 1,475,742 tx (5.1%)
+
+ + PER-VALIDATOR COMMIT METRICS:
+ Validator    TPS (tx/s)    Mean (ms)    p95 (ms)    Misses
+ 0            45,701        103,032      189,806     0
+ 1            2,669         1,823        2,300       0
+ 2            2,702         2,558        5,277       0
+ 3            2,735         2,180        3,914       0
+ Overall      53,807        87,840 (wtd) 161,791 (wtd) 0
+
+ + PER-VALIDATOR QUORUM TIMING (ms):
+                    mean            p95             std      
+ Validator       delay    lat    delay    lat    delay    lat
+ 0              20,299     17   22,517    100    3,743     35
+ 1                   0    113        0    120        2      4
+ 2                   1    114        0    122       16      8
+ 3                   3    112        0    119       23     11
+
+ + PER-STAGE LATENCY BREAKDOWN (mean, ms):
+   Stage                            All
+   Client -> Worker:             14,072
+   Worker -> Batch seal:             93
+   Batch seal -> Quorum:         15,478
+   Quorum -> Processed:              10
+   Processed -> Header:             152
+   Header -> Certified:             200
+   Certified -> Committed:        1,512
+   Sum:                          31,517
+   (n=)                          39,065
+-----------------------------------------
+CMD: LABEL=n4_v_rate_imb90_r110000_run_1 LOCAL_ORCH=0 NODES=4 WORKER_BANDWIDTHS_MBPS=600,600,600,600 RATE_WEIGHTS=0.9,0.0333333,0.0333333,0.0333333 BASELINE=1 RATE=110000 DURATION=900 WARMUP=240 IN_MEMORY_STORE=1 fab cloudlab --manifest=manifest.xml --latency=100ms --primary-bw=300mbit --log-dir=/home/zpkhor/narwhal-validator/benchmark/exp/results/tps_timeline_baseline_cloud_20260414_015150/n4_v_rate_imb90_r110000_run_1
+[92mStarting CloudLab benchmark[0m
+All SSH hosts: ['hp084.utah.cloudlab.us', 'hp091.utah.cloudlab.us', 'hp069.utah.cloudlab.us', 'hp021.utah.cloudlab.us']
+Killing previous processes...
+Resetting TCP buffers...
+Compiling...
+Distributing binaries to 4 machines...
+Generating configuration files...
+Uploading config files...
+Applying TC QoS shaping...
+TC QoS applied: primary=300000kbps, worker_bws=[600000, 600000, 600000, 600000]kbps
+Starting primaries and workers...
+Waiting for workers to be ready...
+All workers ready.
+Starting clients...
+Running benchmark (900 sec)...
+Stopping processes...
+Downloading logs...
+Parsing logs...
+
+-----------------------------------------
+ SUMMARY:
+-----------------------------------------
+ + CONFIG:
+ Committee size: 4 node(s)
+ Worker(s) per node: 1 worker(s)
+ Input rate: 110,002 tx/s
+ Transaction size: 512 B
+ Benchmark duration: 900.0 s
+ Consensus duration: 541.55 s
+ Commit duration: 539.93 s
+
+
+ + LAST COMMITTED PER VALIDATOR (from primary logs):
+ Validator  Time            Round
+ 0          06:53:54.850     3016
+ 1          06:53:54.872     3016
+ 2          06:53:54.873     3016
+ 3          06:53:54.876     3016
+ + RESULTS:
+ f+1 Commit latency (workers) (mean): 21,771 ms
+ f+1 Commit latency (workers) (p50): 2,055 ms
+ f+1 Commit latency (workers) (p90): 75,622 ms
+ f+1 Commit latency (workers) (p95): 184,317 ms
+ f+1 Commit latency (workers) (p99): 271,856 ms
+
+ Consensus TPS: 56,488 tx/s
+ Consensus BPS: 28,921,996 B/s
+ Committed TPS: 56,657 tx/s
+ Committed BPS: 29,008,290 B/s
+
+ + VALIDATOR LOAD DISTRIBUTION:
+ Validator 0: 24,589,136 tx (80.4%)
+ Validator 1: 1,978,347 tx (6.5%)
+ Validator 2: 1,995,821 tx (6.5%)
+ Validator 3: 2,027,694 tx (6.6%)
+
+ + PER-VALIDATOR COMMIT METRICS:
+ Validator    TPS (tx/s)    Mean (ms)    p95 (ms)    Misses
+ 0            45,541        149,597      278,860     0
+ 1            3,664         2,442        4,314       0
+ 2            3,696         1,882        2,417       0
+ 3            3,755         2,220        3,204       0
+ Overall      56,657        120,675 (wtd) 224,797 (wtd) 0
+
+ + PER-VALIDATOR QUORUM TIMING (ms):
+                    mean            p95             std      
+ Validator       delay    lat    delay    lat    delay    lat
+ 0              20,610     17   22,582     96    3,116     34
+ 1                   0    119        0    129        9      7
+ 2                   1    118        0    128       16      9
+ 3                   5    116        0    130       30     15
+
+ + PER-STAGE LATENCY BREAKDOWN (mean, ms):
+   Stage                            All
+   Client -> Worker:             16,803
+   Worker -> Batch seal:             98
+   Batch seal -> Quorum:         15,721
+   Quorum -> Processed:               9
+   Processed -> Header:             152
+   Header -> Certified:             200
+   Certified -> Committed:        1,613
+   Sum:                          34,595
+   (n=)                          37,140
+-----------------------------------------
+CMD: LABEL=n4_v_rate_imb99_r110000_run_1 LOCAL_ORCH=0 NODES=4 WORKER_BANDWIDTHS_MBPS=600,600,600,600 RATE_WEIGHTS=0.99,0.00333333,0.00333333,0.00333333 BASELINE=1 RATE=110000 DURATION=900 WARMUP=240 IN_MEMORY_STORE=1 fab cloudlab --manifest=manifest.xml --latency=100ms --primary-bw=300mbit --log-dir=/home/zpkhor/narwhal-validator/benchmark/exp/results/tps_timeline_baseline_cloud_20260414_015150/n4_v_rate_imb99_r110000_run_1
+[92mStarting CloudLab benchmark[0m
+All SSH hosts: ['hp084.utah.cloudlab.us', 'hp091.utah.cloudlab.us', 'hp069.utah.cloudlab.us', 'hp021.utah.cloudlab.us']
+Killing previous processes...
+Resetting TCP buffers...
+Compiling...
+Distributing binaries to 4 machines...
+Generating configuration files...
+Uploading config files...
+Applying TC QoS shaping...
+TC QoS applied: primary=300000kbps, worker_bws=[600000, 600000, 600000, 600000]kbps
+Starting primaries and workers...
+Waiting for workers to be ready...
+All workers ready.
+Starting clients...
+Running benchmark (900 sec)...
+Stopping processes...
+Downloading logs...
+Parsing logs...
+
+-----------------------------------------
+ SUMMARY:
+-----------------------------------------
+ + CONFIG:
+ Committee size: 4 node(s)
+ Worker(s) per node: 1 worker(s)
+ Input rate: 110,002 tx/s
+ Transaction size: 512 B
+ Benchmark duration: 900.0 s
+ Consensus duration: 540.91 s
+ Commit duration: 539.5 s
+
+
+ + LAST COMMITTED PER VALIDATOR (from primary logs):
+ Validator  Time            Round
+ 0          07:09:32.536     3016
+ 1          07:09:32.537     3016
+ 2          07:09:32.538     3016
+ 3          07:09:32.536     3016
+ + RESULTS:
+ f+1 Commit latency (workers) (mean): 21,201 ms
+ f+1 Commit latency (workers) (p50): 1,983 ms
+ f+1 Commit latency (workers) (p90): 63,331 ms
+ f+1 Commit latency (workers) (p95): 187,211 ms
+ f+1 Commit latency (workers) (p99): 289,065 ms
+
+ Consensus TPS: 46,718 tx/s
+ Consensus BPS: 23,919,798 B/s
+ Committed TPS: 46,840 tx/s
+ Committed BPS: 23,982,135 B/s
+
+ + VALIDATOR LOAD DISTRIBUTION:
+ Validator 0: 24,599,883 tx (97.3%)
+ Validator 1: 198,070 tx (0.8%)
+ Validator 2: 229,252 tx (0.9%)
+ Validator 3: 243,174 tx (1.0%)
+
+ + PER-VALIDATOR COMMIT METRICS:
+ Validator    TPS (tx/s)    Mean (ms)    p95 (ms)    Misses
+ 0            45,597        160,146      300,167     0
+ 1            367           1,759        2,153       0
+ 2            425           1,895        2,450       0
+ 3            451           2,013        2,422       0
+ Overall      46,840        155,947 (wtd) 292,265 (wtd) 0
+
+ + PER-VALIDATOR QUORUM TIMING (ms):
+                    mean            p95             std      
+ Validator       delay    lat    delay    lat    delay    lat
+ 0              20,720     17   22,694     99    3,038     35
+ 1                   0    103        0    109        0      3
+ 2                   2    102        0    107       21      9
+ 3                   3    102        0    109       25     11
+
+ + PER-STAGE LATENCY BREAKDOWN (mean, ms):
+   Stage                            All
+   Client -> Worker:             16,735
+   Worker -> Batch seal:             93
+   Batch seal -> Quorum:         15,732
+   Quorum -> Processed:               9
+   Processed -> Header:             154
+   Header -> Certified:             200
+   Certified -> Committed:        1,372
+   Sum:                          34,295
+   (n=)                          36,749
+-----------------------------------------
+CMD: LABEL=n4_v_rate_imb60_r110000_run_1 LOCAL_ORCH=0 NODES=4 WORKER_BANDWIDTHS_MBPS=600,600,600,600 RATE_WEIGHTS=0.6,0.133333,0.133333,0.133333 BASELINE=1 RATE=110000 DURATION=900 WARMUP=240 IN_MEMORY_STORE=1 fab cloudlab --manifest=manifest.xml --latency=100ms --primary-bw=300mbit --log-dir=/home/zpkhor/narwhal-validator/benchmark/exp/results/tps_timeline_baseline_cloud_20260414_015150/n4_v_rate_imb60_r110000_run_1
+[92mStarting CloudLab benchmark[0m
+All SSH hosts: ['hp084.utah.cloudlab.us', 'hp091.utah.cloudlab.us', 'hp069.utah.cloudlab.us', 'hp021.utah.cloudlab.us']
+Killing previous processes...
+Resetting TCP buffers...
+Compiling...
+Distributing binaries to 4 machines...
+Generating configuration files...
+Uploading config files...
+Applying TC QoS shaping...
+TC QoS applied: primary=300000kbps, worker_bws=[600000, 600000, 600000, 600000]kbps
+Starting primaries and workers...
+Waiting for workers to be ready...
+All workers ready.
+Starting clients...
+Running benchmark (900 sec)...
+Stopping processes...
+Downloading logs...
+Parsing logs...
+
+-----------------------------------------
+ SUMMARY:
+-----------------------------------------
+ + CONFIG:
+ Committee size: 4 node(s)
+ Worker(s) per node: 1 worker(s)
+ Input rate: 110,002 tx/s
+ Transaction size: 512 B
+ Benchmark duration: 900.0 s
+ Consensus duration: 548.49 s
+ Commit duration: 539.6 s
+
+
+ + LAST COMMITTED PER VALIDATOR (from primary logs):
+ Validator  Time            Round
+ 0          07:25:10.742     3018
+ 1          07:25:10.753     3018
+ 2          07:25:10.750     3018
+ 3          07:25:10.732     3018
+ + RESULTS:
+ f+1 Commit latency (workers) (mean): 17,999 ms
+ f+1 Commit latency (workers) (p50): 2,163 ms
+ f+1 Commit latency (workers) (p90): 79,217 ms
+ f+1 Commit latency (workers) (p95): 126,948 ms
+ f+1 Commit latency (workers) (p99): 161,775 ms
+
+ Consensus TPS: 88,404 tx/s
+ Consensus BPS: 45,262,826 B/s
+ Committed TPS: 89,860 tx/s
+ Committed BPS: 46,008,201 B/s
+
+ + VALIDATOR LOAD DISTRIBUTION:
+ Validator 0: 24,511,953 tx (50.6%)
+ Validator 1: 8,123,755 tx (16.8%)
+ Validator 2: 7,916,631 tx (16.3%)
+ Validator 3: 7,936,171 tx (16.4%)
+
+ + PER-VALIDATOR COMMIT METRICS:
+ Validator    TPS (tx/s)    Mean (ms)    p95 (ms)    Misses
+ 0            45,426        87,107       162,335     0
+ 1            15,055        2,341        2,738       0
+ 2            14,671        1,875        2,358       0
+ 3            14,707        2,078        2,488       0
+ Overall      89,860        45,073 (wtd) 83,315 (wtd) 0
+
+ + PER-VALIDATOR QUORUM TIMING (ms):
+                    mean            p95             std      
+ Validator       delay    lat    delay    lat    delay    lat
+ 0              20,241     18   22,808     86    4,003     33
+ 1                 174     61      208    116       23     42
+ 2                 174     62      205    117       23     42
+ 3                 175     62      206    117       23     42
+
+ + PER-STAGE LATENCY BREAKDOWN (mean, ms):
+   Stage                            All
+   Client -> Worker:             12,134
+   Worker -> Batch seal:             37
+   Batch seal -> Quorum:         10,363
+   Quorum -> Processed:               9
+   Processed -> Header:             150
+   Header -> Certified:             199
+   Certified -> Committed:        1,371
+   Sum:                          24,264
+   (n=)                          39,660
+-----------------------------------------
+CMD: LABEL=n4_bw_f_rate_imb90_r110000_run_1 LOCAL_ORCH=0 NODES=4 WORKER_BANDWIDTHS_MBPS=600,600,600,200 RATE_WEIGHTS=0.9,0.0333333,0.0333333,0.0333333 BASELINE=1 RATE=110000 DURATION=900 WARMUP=240 IN_MEMORY_STORE=1 fab cloudlab --manifest=manifest.xml --latency=100ms --primary-bw=300mbit --log-dir=/home/zpkhor/narwhal-validator/benchmark/exp/results/tps_timeline_baseline_cloud_20260414_015150/n4_bw_f_rate_imb90_r110000_run_1
+[92mStarting CloudLab benchmark[0m
+All SSH hosts: ['hp084.utah.cloudlab.us', 'hp091.utah.cloudlab.us', 'hp069.utah.cloudlab.us', 'hp021.utah.cloudlab.us']
+Killing previous processes...
+Resetting TCP buffers...
+Compiling...
+Distributing binaries to 4 machines...
+Generating configuration files...
+Uploading config files...
+Applying TC QoS shaping...
+TC QoS applied: primary=300000kbps, worker_bws=[600000, 600000, 600000, 200000]kbps
+Starting primaries and workers...
+Waiting for workers to be ready...
+All workers ready.
+Starting clients...
+Running benchmark (900 sec)...
+Stopping processes...
+Downloading logs...
+Parsing logs...
+
+-----------------------------------------
+ SUMMARY:
+-----------------------------------------
+ + CONFIG:
+ Committee size: 4 node(s)
+ Worker(s) per node: 1 worker(s)
+ Input rate: 110,002 tx/s
+ Transaction size: 512 B
+ Benchmark duration: 900.0 s
+ Consensus duration: 541.09 s
+ Commit duration: 539.62 s
+
+
+ + LAST COMMITTED PER VALIDATOR (from primary logs):
+ Validator  Time            Round
+ 0          07:38:53.593     2626
+ 1          07:38:54.825     2630
+ 2          07:38:54.776     2630
+ 3          07:33:52.780     1625
+ + RESULTS:
+ f+1 Commit latency (workers) (mean): 37,481 ms
+ f+1 Commit latency (workers) (p50): 2,315 ms
+ f+1 Commit latency (workers) (p90): 149,168 ms
+ f+1 Commit latency (workers) (p95): 188,982 ms
+ f+1 Commit latency (workers) (p99): 263,812 ms
+
+ Consensus TPS: 62,278 tx/s
+ Consensus BPS: 31,886,220 B/s
+ Committed TPS: 62,448 tx/s
+ Committed BPS: 31,973,260 B/s
+
+ + VALIDATOR LOAD DISTRIBUTION:
+ Validator 0: 25,863,144 tx (76.7%)
+ Validator 1: 1,890,760 tx (5.6%)
+ Validator 2: 1,993,779 tx (5.9%)
+ Validator 3: 3,950,384 tx (11.7%)
+
+ + PER-VALIDATOR COMMIT METRICS:
+ Validator    TPS (tx/s)    Mean (ms)    p95 (ms)    Misses
+ 0            47,928        138,364      268,293     0
+ 1            3,504         2,982        9,277       0
+ 2            3,695         1,883        2,446       0
+ 3            7,321         70,919       172,313     0
+ Overall      62,448        114,786 (wtd) 226,779 (wtd) 0
+
+ + PER-VALIDATOR QUORUM TIMING (ms):
+                    mean            p95             std      
+ Validator       delay    lat    delay    lat    delay    lat
+ 0              19,611     16   22,006     92    3,256     33
+ 1                   1    124        0    145       12     11
+ 2                   1    125        0    144       15     14
+ 3              55,932     66   67,058    298   21,151    105
+
+ + PER-STAGE LATENCY BREAKDOWN (mean, ms):
+   Stage                            All
+   Client -> Worker:             24,408
+   Worker -> Batch seal:             91
+   Batch seal -> Quorum:         21,116
+   Quorum -> Processed:              12
+   Processed -> Header:             152
+   Header -> Certified:             209
+   Certified -> Committed:        1,501
+   Sum:                          47,489
+   (n=)                          32,533
+-----------------------------------------
+CMD: LABEL=n4_bw_f1_rate_imb90_r110000_run_1 LOCAL_ORCH=0 NODES=4 WORKER_BANDWIDTHS_MBPS=600,600,200,200 RATE_WEIGHTS=0.9,0.0333333,0.0333333,0.0333333 BASELINE=1 RATE=110000 DURATION=900 WARMUP=240 IN_MEMORY_STORE=1 fab cloudlab --manifest=manifest.xml --latency=100ms --primary-bw=300mbit --log-dir=/home/zpkhor/narwhal-validator/benchmark/exp/results/tps_timeline_baseline_cloud_20260414_015150/n4_bw_f1_rate_imb90_r110000_run_1
+[92mStarting CloudLab benchmark[0m
+All SSH hosts: ['hp084.utah.cloudlab.us', 'hp091.utah.cloudlab.us', 'hp069.utah.cloudlab.us', 'hp021.utah.cloudlab.us']
+Killing previous processes...
+Resetting TCP buffers...
+Compiling...
+Distributing binaries to 4 machines...
+Generating configuration files...
+Uploading config files...
+Applying TC QoS shaping...
+TC QoS applied: primary=300000kbps, worker_bws=[600000, 600000, 200000, 200000]kbps
+Starting primaries and workers...
+Waiting for workers to be ready...
+All workers ready.
+Starting clients...
+Running benchmark (900 sec)...
+Stopping processes...
+Downloading logs...
+Parsing logs...
+
+-----------------------------------------
+ SUMMARY:
+-----------------------------------------
+ + CONFIG:
+ Committee size: 4 node(s)
+ Worker(s) per node: 1 worker(s)
+ Input rate: 110,002 tx/s
+ Transaction size: 512 B
+ Benchmark duration: 900.0 s
+ Consensus duration: 542.07 s
+ Commit duration: 539.9 s
+
+
+ + LAST COMMITTED PER VALIDATOR (from primary logs):
+ Validator  Time            Round
+ 0          07:56:27.309     3016
+ 1          07:56:27.347     3016
+ 2          07:56:27.299     3016
+ 3          07:51:47.795     2086
+ + RESULTS:
+ f+1 Commit latency (workers) (mean): 58,382 ms
+ f+1 Commit latency (workers) (p50): 2,540 ms
+ f+1 Commit latency (workers) (p90): 189,563 ms
+ f+1 Commit latency (workers) (p95): 261,442 ms
+ f+1 Commit latency (workers) (p99): 345,199 ms
+
+ Consensus TPS: 61,345 tx/s
+ Consensus BPS: 31,408,463 B/s
+ Committed TPS: 61,591 tx/s
+ Committed BPS: 31,534,468 B/s
+
+ + VALIDATOR LOAD DISTRIBUTION:
+ Validator 0: 19,948,386 tx (60.0%)
+ Validator 1: 4,258,313 tx (12.8%)
+ Validator 2: 4,425,882 tx (13.3%)
+ Validator 3: 4,620,454 tx (13.9%)
+
+ + PER-VALIDATOR COMMIT METRICS:
+ Validator    TPS (tx/s)    Mean (ms)    p95 (ms)    Misses
+ 0            36,948        258,455      355,065     0
+ 1            7,887         18,592       99,813      0
+ 2            8,198         29,182       134,349     0
+ 3            8,558         60,567       188,079     0
+ Overall      61,591        169,727 (wtd) 269,799 (wtd) 0
+
+ + PER-VALIDATOR QUORUM TIMING (ms):
+                    mean            p95             std      
+ Validator       delay    lat    delay    lat    delay    lat
+ 0              27,269     23   54,156    117   12,057     56
+ 1              29,810     81   53,700    301   24,875    100
+ 2              37,370     83   60,803    248   27,415     93
+ 3              52,364     87   72,013    314   27,586    121
+
+ + PER-STAGE LATENCY BREAKDOWN (mean, ms):
+   Stage                            All
+   Client -> Worker:             37,067
+   Worker -> Batch seal:             90
+   Batch seal -> Quorum:         32,671
+   Quorum -> Processed:              13
+   Processed -> Header:             153
+   Header -> Certified:             207
+   Certified -> Committed:        1,348
+   Sum:                          71,549
+   (n=)                          33,535
+-----------------------------------------
+CMD: LABEL=n21_v_rate_imb60_r90000_run_1 LOCAL_ORCH=0 NODES=21 WORKER_BANDWIDTHS_MBPS=600,600,600,600,600,600,600,600,600,600,600,600,600,600,600,600,600,600,600,600,600 RATE_WEIGHTS=0.1,0.1,0.1,0.1,0.1,0.1,0.0266667,0.0266667,0.0266667,0.0266667,0.0266667,0.0266667,0.0266667,0.0266667,0.0266667,0.0266667,0.0266667,0.0266667,0.0266667,0.0266667,0.0266667 BASELINE=1 RATE=90000 DURATION=900 WARMUP=240 IN_MEMORY_STORE=1 fab cloudlab --manifest=manifest.xml --latency=100ms --primary-bw=300mbit --log-dir=/home/zpkhor/narwhal-validator/benchmark/exp/results/tps_timeline_baseline_cloud_20260414_015150/n21_v_rate_imb60_r90000_run_1
+[92mStarting CloudLab benchmark[0m
+All SSH hosts: ['hp084.utah.cloudlab.us', 'hp091.utah.cloudlab.us', 'hp069.utah.cloudlab.us', 'hp021.utah.cloudlab.us', 'hp077.utah.cloudlab.us', 'hp023.utah.cloudlab.us', 'hp074.utah.cloudlab.us', 'hp109.utah.cloudlab.us', 'hp013.utah.cloudlab.us', 'hp052.utah.cloudlab.us', 'hp014.utah.cloudlab.us', 'hp078.utah.cloudlab.us', 'hp006.utah.cloudlab.us', 'hp054.utah.cloudlab.us', 'hp046.utah.cloudlab.us', 'hp081.utah.cloudlab.us', 'hp027.utah.cloudlab.us', 'hp171.utah.cloudlab.us', 'hp037.utah.cloudlab.us', 'hp199.utah.cloudlab.us', 'hp118.utah.cloudlab.us']
+Killing previous processes...
+Resetting TCP buffers...
+Compiling...
+Distributing binaries to 21 machines...
+Generating configuration files...
+Uploading config files...
+Applying TC QoS shaping...
+TC QoS applied: primary=300000kbps, worker_bws=[600000, 600000, 600000, 600000, 600000, 600000, 600000, 600000, 600000, 600000, 600000, 600000, 600000, 600000, 600000, 600000, 600000, 600000, 600000, 600000, 600000]kbps
+Starting primaries and workers...
+Waiting for workers to be ready...
+All workers ready.
+Starting clients...
+Running benchmark (900 sec)...
+Stopping processes...
+Downloading logs...
+Parsing logs...
+
+-----------------------------------------
+ SUMMARY:
+-----------------------------------------
+ + CONFIG:
+ Committee size: 21 node(s)
+ Worker(s) per node: 1 worker(s)
+ Input rate: 90,015 tx/s
+ Transaction size: 512 B
+ Benchmark duration: 900.0 s
+ Consensus duration: 484.47 s
+ Commit duration: 482.8 s
+
+
+ + LAST COMMITTED PER VALIDATOR (from primary logs):
+ Validator  Time            Round
+ 0          08:09:36.846     2502
+ 1          08:09:36.797     2502
+ 2          08:06:25.644     1887
+ 3          08:06:21.460     1872
+ 4          08:06:27.466     1892
+ 5          08:06:29.851     1901
+ 6          08:09:36.796     2502
+ 7          08:09:36.797     2502
+ 8          08:09:36.797     2502
+ 9          08:09:36.796     2502
+ 10         08:09:36.795     2502
+ 11         08:09:36.848     2502
+ 12         08:09:36.795     2502
+ 13         08:09:35.417     2498
+ 14         08:09:36.846     2502
+ 15         08:08:19.809     2267
+ 16         08:09:36.799     2502
+ 17         08:09:36.795     2502
+ 18         08:09:36.849     2502
+ 19         08:09:36.796     2502
+ 20         08:09:36.794     2502
+ + RESULTS:
+ f+1 Commit latency (workers) (mean): 13,517 ms
+ f+1 Commit latency (workers) (p50): 2,292 ms
+ f+1 Commit latency (workers) (p90): 56,141 ms
+ f+1 Commit latency (workers) (p95): 93,625 ms
+ f+1 Commit latency (workers) (p99): 139,289 ms
+
+ Consensus TPS: 61,840 tx/s
+ Consensus BPS: 31,662,023 B/s
+ Committed TPS: 62,053 tx/s
+ Committed BPS: 31,770,951 B/s
+
+ + VALIDATOR LOAD DISTRIBUTION:
+ Validator 0: 2,950,540 tx (9.8%)
+ Validator 1: 2,279,341 tx (7.6%)
+ Validator 2: 1,928,598 tx (6.4%)
+ Validator 3: 1,807,450 tx (6.0%)
+ Validator 4: 1,918,737 tx (6.4%)
+ Validator 5: 1,803,542 tx (6.0%)
+ Validator 6: 1,160,644 tx (3.9%)
+ Validator 7: 1,159,923 tx (3.9%)
+ Validator 8: 1,160,763 tx (3.9%)
+ Validator 9: 1,160,283 tx (3.9%)
+ Validator 10: 1,160,403 tx (3.9%)
+ Validator 11: 1,160,163 tx (3.9%)
+ Validator 12: 1,159,907 tx (3.9%)
+ Validator 13: 1,159,109 tx (3.9%)
+ Validator 14: 1,160,283 tx (3.9%)
+ Validator 15: 1,021,866 tx (3.4%)
+ Validator 16: 1,160,524 tx (3.9%)
+ Validator 17: 1,160,283 tx (3.9%)
+ Validator 18: 1,161,080 tx (3.9%)
+ Validator 19: 1,161,194 tx (3.9%)
+ Validator 20: 1,164,629 tx (3.9%)
+
+ + PER-VALIDATOR COMMIT METRICS:
+ Validator    TPS (tx/s)    Mean (ms)    p95 (ms)    Misses
+ 0            6,111         92,032       141,955     0
+ 1            4,721         67,740       135,638     0
+ 2            3,995         65,810       100,075     0
+ 3            3,744         62,571       101,286     0
+ 4            3,974         69,723       111,506     0
+ 5            3,736         64,350       106,730     0
+ 6            2,404         2,196        2,862       0
+ 7            2,402         2,172        2,816       0
+ 8            2,404         2,222        2,945       0
+ 9            2,403         2,171        2,809       0
+ 10           2,403         2,225        2,825       0
+ 11           2,403         2,202        2,886       0
+ 12           2,402         2,159        2,742       0
+ 13           2,401         2,168        2,853       0
+ 14           2,403         2,175        2,796       0
+ 15           2,117         2,159        2,665       0
+ 16           2,404         2,185        2,831       0
+ 17           2,403         2,171        2,818       0
+ 18           2,405         2,154        2,810       0
+ 19           2,405         2,150        2,757       0
+ 20           2,412         2,136        2,778       0
+ Overall      62,053        31,823 (wtd) 52,042 (wtd) 0
+
+ + PER-VALIDATOR QUORUM TIMING (ms):
+                    mean            p95             std      
+ Validator       delay    lat    delay    lat    delay    lat
+ 0              87,236    148  139,266    703   42,784    262
+ 1              63,777    158  133,222    727   37,306    276
+ 2              61,921    152   97,774    748   29,707    281
+ 3              58,799    160   98,907    721   27,056    271
+ 4              65,958    153  109,621    784   33,938    285
+ 5              60,611    164  104,774    753   30,438    299
+ 6                  31    201       56    233       22     20
+ 7                  30    201       55    235       22     20
+ 8                  27    201       53    234       20     20
+ 9                  26    200       54    235       22     21
+ 10                 31    201       58    233       19     20
+ 11                 33    201       57    232       20     19
+ 12                 26    200       54    234       18     20
+ 13                 33    200       59    234       26     21
+ 14                 27    201       53    234       19     20
+ 15                 28    200       56    235       20     22
+ 16                 30    201       56    231       24     18
+ 17                 31    200       58    232       22     20
+ 18                 31    201       57    234       21     20
+ 19                 28    200       58    233       23     20
+ 20                 27    200       54    234       26     21
+
+ + PER-STAGE LATENCY BREAKDOWN (mean, ms):
+   Stage                            All
+   Client -> Worker:                 37
+   Worker -> Batch seal:             99
+   Batch seal -> Quorum:         18,543
+   Quorum -> Processed:               6
+   Processed -> Header:             154
+   Header -> Certified:             204
+   Certified -> Committed:        1,469
+   Sum:                          20,512
+   (n=)                         170,480
+
+ WARNINGS:
+  - Consensus stalled the system
+  - Commit stalled the system
+-----------------------------------------
+CMD: LABEL=n21_v_rate_imb60_r95000_run_1 LOCAL_ORCH=0 NODES=21 WORKER_BANDWIDTHS_MBPS=600,600,600,600,600,600,600,600,600,600,600,600,600,600,600,600,600,600,600,600,600 RATE_WEIGHTS=0.1,0.1,0.1,0.1,0.1,0.1,0.0266667,0.0266667,0.0266667,0.0266667,0.0266667,0.0266667,0.0266667,0.0266667,0.0266667,0.0266667,0.0266667,0.0266667,0.0266667,0.0266667,0.0266667 BASELINE=1 RATE=95000 DURATION=900 WARMUP=240 IN_MEMORY_STORE=1 fab cloudlab --manifest=manifest.xml --latency=100ms --primary-bw=300mbit --log-dir=/home/zpkhor/narwhal-validator/benchmark/exp/results/tps_timeline_baseline_cloud_20260414_015150/n21_v_rate_imb60_r95000_run_1
+[92mStarting CloudLab benchmark[0m
+All SSH hosts: ['hp084.utah.cloudlab.us', 'hp091.utah.cloudlab.us', 'hp069.utah.cloudlab.us', 'hp021.utah.cloudlab.us', 'hp077.utah.cloudlab.us', 'hp023.utah.cloudlab.us', 'hp074.utah.cloudlab.us', 'hp109.utah.cloudlab.us', 'hp013.utah.cloudlab.us', 'hp052.utah.cloudlab.us', 'hp014.utah.cloudlab.us', 'hp078.utah.cloudlab.us', 'hp006.utah.cloudlab.us', 'hp054.utah.cloudlab.us', 'hp046.utah.cloudlab.us', 'hp081.utah.cloudlab.us', 'hp027.utah.cloudlab.us', 'hp171.utah.cloudlab.us', 'hp037.utah.cloudlab.us', 'hp199.utah.cloudlab.us', 'hp118.utah.cloudlab.us']
+Killing previous processes...
+Resetting TCP buffers...
+Compiling...
+Distributing binaries to 21 machines...
+Generating configuration files...
+Uploading config files...
+Applying TC QoS shaping...
+TC QoS applied: primary=300000kbps, worker_bws=[600000, 600000, 600000, 600000, 600000, 600000, 600000, 600000, 600000, 600000, 600000, 600000, 600000, 600000, 600000, 600000, 600000, 600000, 600000, 600000, 600000]kbps
+Starting primaries and workers...
+Waiting for workers to be ready...
+All workers ready.
+Starting clients...
+Running benchmark (900 sec)...
+Stopping processes...
+Downloading logs...
+Parsing logs...
+
+-----------------------------------------
+ SUMMARY:
+-----------------------------------------
+ + CONFIG:
+ Committee size: 21 node(s)
+ Worker(s) per node: 1 worker(s)
+ Input rate: 95,010 tx/s
+ Transaction size: 512 B
+ Benchmark duration: 900.0 s
+ Consensus duration: 470.57 s
+ Commit duration: 468.78 s
+
+
+ + LAST COMMITTED PER VALIDATOR (from primary logs):
+ Validator  Time            Round
+ 0          08:24:11.479     1869
+ 1          08:25:41.054     2168
+ 2          08:24:03.705     1845
+ 3          08:25:09.151     2063
+ 4          08:25:42.230     2173
+ 5          08:27:13.614     2478
+ 6          08:27:12.322     2474
+ 7          08:27:13.550     2478
+ 8          08:27:13.549     2478
+ 9          08:27:13.595     2478
+ 10         08:27:13.593     2478
+ 11         08:27:13.550     2478
+ 12         08:27:13.568     2478
+ 13         08:27:13.548     2478
+ 14         08:27:13.549     2478
+ 15         08:27:13.543     2478
+ 16         08:27:13.549     2478
+ 17         08:27:13.549     2478
+ 18         08:27:13.563     2478
+ 19         08:27:13.549     2478
+ 20         08:27:13.591     2478
+ + RESULTS:
+ f+1 Commit latency (workers) (mean): 18,778 ms
+ f+1 Commit latency (workers) (p50): 2,308 ms
+ f+1 Commit latency (workers) (p90): 74,999 ms
+ f+1 Commit latency (workers) (p95): 86,420 ms
+ f+1 Commit latency (workers) (p99): 188,570 ms
+
+ Consensus TPS: 66,567 tx/s
+ Consensus BPS: 34,082,550 B/s
+ Committed TPS: 66,822 tx/s
+ Committed BPS: 34,212,619 B/s
+
+ + VALIDATOR LOAD DISTRIBUTION:
+ Validator 0: 1,875,840 tx (6.0%)
+ Validator 1: 2,393,057 tx (7.6%)
+ Validator 2: 1,684,348 tx (5.4%)
+ Validator 3: 2,285,203 tx (7.3%)
+ Validator 4: 2,243,192 tx (7.2%)
+ Validator 5: 2,984,735 tx (9.5%)
+ Validator 6: 1,189,333 tx (3.8%)
+ Validator 7: 1,190,980 tx (3.8%)
+ Validator 8: 1,189,713 tx (3.8%)
+ Validator 9: 1,190,459 tx (3.8%)
+ Validator 10: 1,190,473 tx (3.8%)
+ Validator 11: 1,189,480 tx (3.8%)
+ Validator 12: 1,190,100 tx (3.8%)
+ Validator 13: 1,190,010 tx (3.8%)
+ Validator 14: 1,189,724 tx (3.8%)
+ Validator 15: 1,189,586 tx (3.8%)
+ Validator 16: 1,190,727 tx (3.8%)
+ Validator 17: 1,189,435 tx (3.8%)
+ Validator 18: 1,191,114 tx (3.8%)
+ Validator 19: 1,192,915 tx (3.8%)
+ Validator 20: 1,194,169 tx (3.8%)
+
+ + PER-VALIDATOR COMMIT METRICS:
+ Validator    TPS (tx/s)    Mean (ms)    p95 (ms)    Misses
+ 0            4,002         66,448       109,569     0
+ 1            5,105         89,046       136,266     0
+ 2            3,593         73,011       118,140     0
+ 3            4,875         75,786       117,415     0
+ 4            4,785         72,462       116,634     0
+ 5            6,367         94,809       139,855     0
+ 6            2,537         2,162        2,686       0
+ 7            2,541         2,146        2,704       0
+ 8            2,538         2,149        2,638       0
+ 9            2,539         2,168        2,656       0
+ 10           2,540         2,190        2,692       0
+ 11           2,537         2,106        2,634       0
+ 12           2,539         2,155        2,668       0
+ 13           2,539         2,126        2,649       0
+ 14           2,538         2,135        2,661       0
+ 15           2,538         2,141        2,663       0
+ 16           2,540         2,148        2,648       0
+ 17           2,537         2,120        2,614       0
+ 18           2,541         2,182        2,675       0
+ 19           2,545         2,167        2,663       0
+ 20           2,547         2,119        2,641       0
+ Overall      66,822        35,684 (wtd) 55,084 (wtd) 0
+
+ + PER-VALIDATOR QUORUM TIMING (ms):
+                    mean            p95             std      
+ Validator       delay    lat    delay    lat    delay    lat
+ 0              62,252    154  107,661    763   30,107    275
+ 1              84,145    155  132,968    734   40,705    274
+ 2              68,484    167  115,931    777   32,860    289
+ 3              71,721    149  114,614    756   32,450    267
+ 4              68,631    149  113,788    729   29,005    270
+ 5              89,300    142  134,245    662   36,298    252
+ 6                  42    202       72    234       23     19
+ 7                  40    201       67    237       32     22
+ 8                  42    201       71    236       29     21
+ 9                  38    201       68    241       26     24
+ 10                 40    201       71    237       27     22
+ 11                 43    201       71    235       24     21
+ 12                 44    201       72    236       29     21
+ 13                 45    201       73    236       29     22
+ 14                 46    201       75    235       28     20
+ 15                 40    201       71    239       25     23
+ 16                 41    201       74    235       33     21
+ 17                 44    201       75    237       28     21
+ 18                 41    201       70    235       27     20
+ 19                 44    201       72    235       32     20
+ 20                 40    201       70    238       28     22
+
+ + PER-STAGE LATENCY BREAKDOWN (mean, ms):
+   Stage                            All
+   Client -> Worker:                 77
+   Worker -> Batch seal:             99
+   Batch seal -> Quorum:         21,787
+   Quorum -> Processed:               6
+   Processed -> Header:             152
+   Header -> Certified:             203
+   Certified -> Committed:        1,433
+   Sum:                          23,757
+   (n=)                         167,577
+
+ WARNINGS:
+  - Consensus stalled the system
+  - Commit stalled the system
+-----------------------------------------
+CMD: LABEL=n16_v_rate_imb60_r95000_run_1 LOCAL_ORCH=0 NODES=16 WORKER_BANDWIDTHS_MBPS=600,600,600,600,600,600,600,600,600,600,600,600,600,600,600,600 RATE_WEIGHTS=0.15,0.15,0.15,0.15,0.0333333,0.0333333,0.0333333,0.0333333,0.0333333,0.0333333,0.0333333,0.0333333,0.0333333,0.0333333,0.0333333,0.0333333 BASELINE=1 RATE=95000 DURATION=900 WARMUP=240 IN_MEMORY_STORE=1 fab cloudlab --manifest=manifest.xml --latency=100ms --primary-bw=300mbit --log-dir=/home/zpkhor/narwhal-validator/benchmark/exp/results/tps_timeline_baseline_cloud_20260414_015150/n16_v_rate_imb60_r95000_run_1
+[92mStarting CloudLab benchmark[0m
+All SSH hosts: ['hp084.utah.cloudlab.us', 'hp091.utah.cloudlab.us', 'hp069.utah.cloudlab.us', 'hp021.utah.cloudlab.us', 'hp077.utah.cloudlab.us', 'hp023.utah.cloudlab.us', 'hp074.utah.cloudlab.us', 'hp109.utah.cloudlab.us', 'hp013.utah.cloudlab.us', 'hp052.utah.cloudlab.us', 'hp014.utah.cloudlab.us', 'hp078.utah.cloudlab.us', 'hp006.utah.cloudlab.us', 'hp054.utah.cloudlab.us', 'hp046.utah.cloudlab.us', 'hp081.utah.cloudlab.us']
+Killing previous processes...
+Resetting TCP buffers...
+Compiling...
+Distributing binaries to 16 machines...
+Generating configuration files...
+Uploading config files...
+Applying TC QoS shaping...
+TC QoS applied: primary=300000kbps, worker_bws=[600000, 600000, 600000, 600000, 600000, 600000, 600000, 600000, 600000, 600000, 600000, 600000, 600000, 600000, 600000, 600000]kbps
+Starting primaries and workers...
+Waiting for workers to be ready...
+All workers ready.
+Starting clients...
+Running benchmark (900 sec)...
+Stopping processes...
+Downloading logs...
+Parsing logs...
+
+-----------------------------------------
+ SUMMARY:
+-----------------------------------------
+ + CONFIG:
+ Committee size: 16 node(s)
+ Worker(s) per node: 1 worker(s)
+ Input rate: 95,008 tx/s
+ Transaction size: 512 B
+ Benchmark duration: 900.0 s
+ Consensus duration: 534.83 s
+ Commit duration: 533.43 s
+
+
+ + LAST COMMITTED PER VALIDATOR (from primary logs):
+ Validator  Time            Round
+ 0          08:43:30.632     2202
+ 1          08:45:09.798     2532
+ 2          08:42:29.955     1999
+ 3          08:42:36.577     2024
+ 4          08:45:48.823     2664
+ 5          08:45:48.816     2664
+ 6          08:45:48.819     2664
+ 7          08:45:48.803     2664
+ 8          08:45:48.808     2664
+ 9          08:45:48.813     2664
+ 10         08:45:48.818     2664
+ 11         08:45:48.849     2664
+ 12         08:45:48.825     2664
+ 13         08:45:36.172     2621
+ 14         08:45:48.836     2664
+ 15         08:45:48.830     2664
+ + RESULTS:
+ f+1 Commit latency (workers) (mean): 16,345 ms
+ f+1 Commit latency (workers) (p50): 2,218 ms
+ f+1 Commit latency (workers) (p90): 70,576 ms
+ f+1 Commit latency (workers) (p95): 108,018 ms
+ f+1 Commit latency (workers) (p99): 137,205 ms
+
+ Consensus TPS: 65,044 tx/s
+ Consensus BPS: 33,302,464 B/s
+ Committed TPS: 65,214 tx/s
+ Committed BPS: 33,389,555 B/s
+
+ + VALIDATOR LOAD DISTRIBUTION:
+ Validator 0: 3,905,069 tx (11.2%)
+ Validator 1: 4,471,847 tx (12.9%)
+ Validator 2: 3,089,274 tx (8.9%)
+ Validator 3: 3,034,562 tx (8.7%)
+ Validator 4: 1,689,120 tx (4.9%)
+ Validator 5: 1,689,278 tx (4.9%)
+ Validator 6: 1,689,044 tx (4.9%)
+ Validator 7: 1,690,703 tx (4.9%)
+ Validator 8: 1,690,657 tx (4.9%)
+ Validator 9: 1,689,832 tx (4.9%)
+ Validator 10: 1,690,359 tx (4.9%)
+ Validator 11: 1,689,594 tx (4.9%)
+ Validator 12: 1,689,278 tx (4.9%)
+ Validator 13: 1,690,068 tx (4.9%)
+ Validator 14: 1,693,133 tx (4.9%)
+ Validator 15: 1,695,533 tx (4.9%)
+
+ + PER-VALIDATOR COMMIT METRICS:
+ Validator    TPS (tx/s)    Mean (ms)    p95 (ms)    Misses
+ 0            7,321         87,680       143,316     0
+ 1            8,383         115,417      203,834     0
+ 2            5,791         84,333       138,220     0
+ 3            5,689         80,695       142,466     0
+ 4            3,167         1,998        2,365       0
+ 5            3,167         2,095        2,508       0
+ 6            3,166         1,997        2,374       0
+ 7            3,169         2,034        2,466       0
+ 8            3,169         2,048        2,489       0
+ 9            3,168         2,107        2,520       0
+ 10           3,169         2,095        2,508       0
+ 11           3,167         2,087        2,521       0
+ 12           3,167         2,036        2,475       0
+ 13           3,168         2,019        2,365       0
+ 14           3,174         2,084        2,491       0
+ 15           3,179         2,031        2,474       0
+ Overall      65,214        40,404 (wtd) 68,429 (wtd) 0
+
+ + PER-VALIDATOR QUORUM TIMING (ms):
+                    mean            p95             std      
+ Validator       delay    lat    delay    lat    delay    lat
+ 0              72,288    100  107,001    457   30,650    183
+ 1              86,262    108  127,194    530   35,624    206
+ 2              75,374    108  113,671    505   32,679    199
+ 3              71,629    112  109,543    512   34,900    203
+ 4                   5    192       22    215        8     14
+ 5                   5    191       27    214        9     15
+ 6                   4    189       22    214        8     16
+ 7                  10    191       33    219       12     18
+ 8                  11    193       36    220       13     17
+ 9                   5    190       24    215        9     15
+ 10                  4    187       21    213        7     16
+ 11                  5    189       28    217       10     17
+ 12                  3    186       21    212        7     16
+ 13                 11    193       35    219       16     17
+ 14                  7    190       32    218       18     17
+ 15                  8    191       30    217       20     16
+
+ + PER-STAGE LATENCY BREAKDOWN (mean, ms):
+   Stage                            All
+   Client -> Worker:              1,767
+   Worker -> Batch seal:            102
+   Batch seal -> Quorum:         25,000
+   Quorum -> Processed:               7
+   Processed -> Header:             152
+   Header -> Certified:             203
+   Certified -> Committed:        1,411
+   Sum:                          28,641
+   (n=)                         147,432
+-----------------------------------------
+CMD: LABEL=n16_v_rate_imb60_r100000_run_1 LOCAL_ORCH=0 NODES=16 WORKER_BANDWIDTHS_MBPS=600,600,600,600,600,600,600,600,600,600,600,600,600,600,600,600 RATE_WEIGHTS=0.15,0.15,0.15,0.15,0.0333333,0.0333333,0.0333333,0.0333333,0.0333333,0.0333333,0.0333333,0.0333333,0.0333333,0.0333333,0.0333333,0.0333333 BASELINE=1 RATE=100000 DURATION=900 WARMUP=240 IN_MEMORY_STORE=1 fab cloudlab --manifest=manifest.xml --latency=100ms --primary-bw=300mbit --log-dir=/home/zpkhor/narwhal-validator/benchmark/exp/results/tps_timeline_baseline_cloud_20260414_015150/n16_v_rate_imb60_r100000_run_1
+[92mStarting CloudLab benchmark[0m
+All SSH hosts: ['hp084.utah.cloudlab.us', 'hp091.utah.cloudlab.us', 'hp069.utah.cloudlab.us', 'hp021.utah.cloudlab.us', 'hp077.utah.cloudlab.us', 'hp023.utah.cloudlab.us', 'hp074.utah.cloudlab.us', 'hp109.utah.cloudlab.us', 'hp013.utah.cloudlab.us', 'hp052.utah.cloudlab.us', 'hp014.utah.cloudlab.us', 'hp078.utah.cloudlab.us', 'hp006.utah.cloudlab.us', 'hp054.utah.cloudlab.us', 'hp046.utah.cloudlab.us', 'hp081.utah.cloudlab.us']
+Killing previous processes...
+Resetting TCP buffers...
+Compiling...
+Distributing binaries to 16 machines...
+Generating configuration files...
+Uploading config files...
+Applying TC QoS shaping...
+TC QoS applied: primary=300000kbps, worker_bws=[600000, 600000, 600000, 600000, 600000, 600000, 600000, 600000, 600000, 600000, 600000, 600000, 600000, 600000, 600000, 600000]kbps
+Starting primaries and workers...
+Waiting for workers to be ready...
+All workers ready.
+Starting clients...
+Running benchmark (900 sec)...
+Stopping processes...
+Downloading logs...
+Parsing logs...
+
+-----------------------------------------
+ SUMMARY:
+-----------------------------------------
+ + CONFIG:
+ Committee size: 16 node(s)
+ Worker(s) per node: 1 worker(s)
+ Input rate: 100,012 tx/s
+ Transaction size: 512 B
+ Benchmark duration: 900.0 s
+ Consensus duration: 540.86 s
+ Commit duration: 539.44 s
+
+
+ + LAST COMMITTED PER VALIDATOR (from primary logs):
+ Validator  Time            Round
+ 0          09:01:14.155     2350
+ 1          09:00:15.892     2155
+ 2          08:59:39.841     2035
+ 3          09:02:12.433     2544
+ 4          09:02:58.715     2700
+ 5          09:02:59.344     2702
+ 6          09:02:59.359     2702
+ 7          09:02:59.302     2702
+ 8          09:02:41.888     2642
+ 9          09:02:59.343     2702
+ 10         09:02:59.315     2702
+ 11         09:02:59.312     2702
+ 12         09:02:58.717     2700
+ 13         09:02:58.687     2700
+ 14         09:02:58.714     2700
+ 15         09:02:59.307     2702
+ + RESULTS:
+ f+1 Commit latency (workers) (mean): 14,646 ms
+ f+1 Commit latency (workers) (p50): 2,252 ms
+ f+1 Commit latency (workers) (p90): 63,825 ms
+ f+1 Commit latency (workers) (p95): 95,268 ms
+ f+1 Commit latency (workers) (p99): 117,408 ms
+
+ Consensus TPS: 68,904 tx/s
+ Consensus BPS: 35,278,989 B/s
+ Committed TPS: 69,086 tx/s
+ Committed BPS: 35,371,857 B/s
+
+ + VALIDATOR LOAD DISTRIBUTION:
+ Validator 0: 4,148,342 tx (11.1%)
+ Validator 1: 3,419,500 tx (9.2%)
+ Validator 2: 3,381,397 tx (9.1%)
+ Validator 3: 4,720,864 tx (12.7%)
+ Validator 4: 1,797,026 tx (4.8%)
+ Validator 5: 1,799,526 tx (4.8%)
+ Validator 6: 1,797,526 tx (4.8%)
+ Validator 7: 1,798,527 tx (4.8%)
+ Validator 8: 1,798,026 tx (4.8%)
+ Validator 9: 1,798,142 tx (4.8%)
+ Validator 10: 1,798,288 tx (4.8%)
+ Validator 11: 1,798,468 tx (4.8%)
+ Validator 12: 1,799,526 tx (4.8%)
+ Validator 13: 1,802,193 tx (4.8%)
+ Validator 14: 1,804,212 tx (4.8%)
+ Validator 15: 1,805,659 tx (4.8%)
+
+ + PER-VALIDATOR COMMIT METRICS:
+ Validator    TPS (tx/s)    Mean (ms)    p95 (ms)    Misses
+ 0            7,690         109,077      189,063     0
+ 1            6,339         101,690      171,608     0
+ 2            6,268         90,027       144,868     0
+ 3            8,751         114,972      203,105     0
+ 4            3,331         2,071        2,561       0
+ 5            3,336         2,151        2,660       0
+ 6            3,332         2,101        2,603       0
+ 7            3,334         2,104        2,591       0
+ 8            3,333         2,151        2,669       0
+ 9            3,333         2,136        2,633       0
+ 10           3,334         2,131        2,661       0
+ 11           3,334         2,151        2,632       0
+ 12           3,336         2,073        2,638       0
+ 13           3,341         2,057        2,559       0
+ 14           3,345         2,167        2,699       0
+ 15           3,347         2,158        2,659       0
+ Overall      69,086        45,434 (wtd) 77,189 (wtd) 0
+
+ + PER-VALIDATOR QUORUM TIMING (ms):
+                    mean            p95             std      
+ Validator       delay    lat    delay    lat    delay    lat
+ 0              82,595    105  112,410    482   31,350    195
+ 1              82,161    111  117,234    510   35,463    207
+ 2              74,935    102  104,288    460   30,331    190
+ 3              84,179    104  117,235    468   29,401    191
+ 4                  11    194       36    222       13     16
+ 5                  10    192       42    223       15     18
+ 6                  14    195       44    223       16     16
+ 7                  18    196       45    224       16     17
+ 8                  11    196       40    221       14     15
+ 9                  10    194       37    223       13     17
+ 10                 14    196       44    225       16     17
+ 11                 13    193       45    222       17     17
+ 12                 13    194       41    223       16     17
+ 13                 19    196       50    222       19     17
+ 14                 14    195       44    224       23     17
+ 15                 14    194       49    222       24     17
+
+ + PER-STAGE LATENCY BREAKDOWN (mean, ms):
+   Stage                            All
+   Client -> Worker:              2,713
+   Worker -> Batch seal:            103
+   Batch seal -> Quorum:         27,571
+   Quorum -> Processed:               7
+   Processed -> Header:             152
+   Header -> Certified:             205
+   Certified -> Committed:        1,439
+   Sum:                          32,191
+   (n=)                         149,398
+-----------------------------------------
+CMD: LABEL=n10_v_rate_imb60_r100000_run_1 LOCAL_ORCH=0 NODES=10 WORKER_BANDWIDTHS_MBPS=600,600,600,600,600,600,600,600,600,600 RATE_WEIGHTS=0.2,0.2,0.2,0.0571429,0.0571429,0.0571429,0.0571429,0.0571429,0.0571429,0.0571429 BASELINE=1 RATE=100000 DURATION=900 WARMUP=240 IN_MEMORY_STORE=1 fab cloudlab --manifest=manifest.xml --latency=100ms --primary-bw=300mbit --log-dir=/home/zpkhor/narwhal-validator/benchmark/exp/results/tps_timeline_baseline_cloud_20260414_015150/n10_v_rate_imb60_r100000_run_1
+[92mStarting CloudLab benchmark[0m
+All SSH hosts: ['hp084.utah.cloudlab.us', 'hp091.utah.cloudlab.us', 'hp069.utah.cloudlab.us', 'hp021.utah.cloudlab.us', 'hp077.utah.cloudlab.us', 'hp023.utah.cloudlab.us', 'hp074.utah.cloudlab.us', 'hp109.utah.cloudlab.us', 'hp013.utah.cloudlab.us', 'hp052.utah.cloudlab.us']
+Killing previous processes...
+Resetting TCP buffers...
+Compiling...
+Distributing binaries to 10 machines...
+Generating configuration files...
+Uploading config files...
+Applying TC QoS shaping...
+TC QoS applied: primary=300000kbps, worker_bws=[600000, 600000, 600000, 600000, 600000, 600000, 600000, 600000, 600000, 600000]kbps
+Starting primaries and workers...
+Waiting for workers to be ready...
+All workers ready.
+Starting clients...
+Running benchmark (900 sec)...
+Stopping processes...
+Downloading logs...
+Parsing logs...
+
+-----------------------------------------
+ SUMMARY:
+-----------------------------------------
+ + CONFIG:
+ Committee size: 10 node(s)
+ Worker(s) per node: 1 worker(s)
+ Input rate: 100,005 tx/s
+ Transaction size: 512 B
+ Benchmark duration: 900.0 s
+ Consensus duration: 541.42 s
+ Commit duration: 539.94 s
+
+
+ + LAST COMMITTED PER VALIDATOR (from primary logs):
+ Validator  Time            Round
+ 0          09:17:34.733     2241
+ 1          09:21:15.834     2980
+ 2          09:19:28.282     2621
+ 3          09:21:19.459     2992
+ 4          09:21:19.438     2992
+ 5          09:21:19.478     2992
+ 6          09:21:19.470     2992
+ 7          09:21:19.448     2992
+ 8          09:21:19.474     2992
+ 9          09:21:19.474     2992
+ + RESULTS:
+ f+1 Commit latency (workers) (mean): 17,191 ms
+ f+1 Commit latency (workers) (p50): 2,397 ms
+ f+1 Commit latency (workers) (p90): 74,143 ms
+ f+1 Commit latency (workers) (p95): 93,550 ms
+ f+1 Commit latency (workers) (p99): 114,901 ms
+
+ Consensus TPS: 83,946 tx/s
+ Consensus BPS: 42,980,440 B/s
+ Committed TPS: 84,176 tx/s
+ Committed BPS: 43,098,331 B/s
+
+ + VALIDATOR LOAD DISTRIBUTION:
+ Validator 0: 6,858,540 tx (15.1%)
+ Validator 1: 8,753,920 tx (19.3%)
+ Validator 2: 8,211,685 tx (18.1%)
+ Validator 3: 3,085,991 tx (6.8%)
+ Validator 4: 3,087,755 tx (6.8%)
+ Validator 5: 3,089,073 tx (6.8%)
+ Validator 6: 3,084,626 tx (6.8%)
+ Validator 7: 3,089,689 tx (6.8%)
+ Validator 8: 3,096,962 tx (6.8%)
+ Validator 9: 3,091,727 tx (6.8%)
+
+ + PER-VALIDATOR COMMIT METRICS:
+ Validator    TPS (tx/s)    Mean (ms)    p95 (ms)    Misses
+ 0            12,702        60,293       103,120     0
+ 1            16,213        62,044       100,906     0
+ 2            15,209        70,595       124,679     0
+ 3            5,715         2,209        3,048       0
+ 4            5,719         2,181        2,997       0
+ 5            5,721         2,152        3,031       0
+ 6            5,713         2,241        3,141       0
+ 7            5,722         2,376        3,225       0
+ 8            5,736         2,236        3,026       0
+ 9            5,726         2,196        3,086       0
+ Overall      84,176        34,863 (wtd) 58,988 (wtd) 0
+
+ + PER-VALIDATOR QUORUM TIMING (ms):
+                    mean            p95             std      
+ Validator       delay    lat    delay    lat    delay    lat
+ 0              46,860     60   65,987    330   19,739    115
+ 1              46,764     56   58,962    304   16,798    103
+ 2              50,322     60   66,498    327   18,685    113
+ 3                  38    165       84    199       28     23
+ 4                  37    164       84    200       27     23
+ 5                  45    164       85    201       30     25
+ 6                  45    164       88    203       30     25
+ 7                  42    164       85    202       31     24
+ 8                  43    164       85    200       32     24
+ 9                  44    165       87    200       33     24
+
+ + PER-STAGE LATENCY BREAKDOWN (mean, ms):
+   Stage                            All
+   Client -> Worker:              3,354
+   Worker -> Batch seal:             81
+   Batch seal -> Quorum:         25,279
+   Quorum -> Processed:              10
+   Processed -> Header:             152
+   Header -> Certified:             204
+   Certified -> Committed:        1,541
+   Sum:                          30,621
+   (n=)                          98,947
+-----------------------------------------
+CMD: LABEL=n10_v_rate_imb60_r105000_run_1 LOCAL_ORCH=0 NODES=10 WORKER_BANDWIDTHS_MBPS=600,600,600,600,600,600,600,600,600,600 RATE_WEIGHTS=0.2,0.2,0.2,0.0571429,0.0571429,0.0571429,0.0571429,0.0571429,0.0571429,0.0571429 BASELINE=1 RATE=105000 DURATION=900 WARMUP=240 IN_MEMORY_STORE=1 fab cloudlab --manifest=manifest.xml --latency=100ms --primary-bw=300mbit --log-dir=/home/zpkhor/narwhal-validator/benchmark/exp/results/tps_timeline_baseline_cloud_20260414_015150/n10_v_rate_imb60_r105000_run_1
+[92mStarting CloudLab benchmark[0m
+All SSH hosts: ['hp084.utah.cloudlab.us', 'hp091.utah.cloudlab.us', 'hp069.utah.cloudlab.us', 'hp021.utah.cloudlab.us', 'hp077.utah.cloudlab.us', 'hp023.utah.cloudlab.us', 'hp074.utah.cloudlab.us', 'hp109.utah.cloudlab.us', 'hp013.utah.cloudlab.us', 'hp052.utah.cloudlab.us']
+Killing previous processes...
+Resetting TCP buffers...
+Compiling...
+Distributing binaries to 10 machines...
+Generating configuration files...
+Uploading config files...
+Applying TC QoS shaping...
+TC QoS applied: primary=300000kbps, worker_bws=[600000, 600000, 600000, 600000, 600000, 600000, 600000, 600000, 600000, 600000]kbps
+Starting primaries and workers...
+Waiting for workers to be ready...
+All workers ready.
+Starting clients...
+Running benchmark (900 sec)...
+Stopping processes...
+Downloading logs...
+Parsing logs...
+
+-----------------------------------------
+ SUMMARY:
+-----------------------------------------
+ + CONFIG:
+ Committee size: 10 node(s)
+ Worker(s) per node: 1 worker(s)
+ Input rate: 105,007 tx/s
+ Transaction size: 512 B
+ Benchmark duration: 900.0 s
+ Consensus duration: 541.41 s
+ Commit duration: 539.88 s
+
+
+ + LAST COMMITTED PER VALIDATOR (from primary logs):
+ Validator  Time            Round
+ 0          09:35:25.874     2559
+ 1          09:37:43.412     3021
+ 2          09:35:30.047     2576
+ 3          09:37:51.211     3048
+ 4          09:37:51.214     3048
+ 5          09:37:51.264     3048
+ 6          09:37:51.239     3048
+ 7          09:37:51.254     3048
+ 8          09:37:51.216     3048
+ 9          09:37:51.256     3048
+ + RESULTS:
+ f+1 Commit latency (workers) (mean): 20,425 ms
+ f+1 Commit latency (workers) (p50): 2,253 ms
+ f+1 Commit latency (workers) (p90): 90,862 ms
+ f+1 Commit latency (workers) (p95): 116,345 ms
+ f+1 Commit latency (workers) (p99): 143,165 ms
+
+ Consensus TPS: 88,075 tx/s
+ Consensus BPS: 45,094,403 B/s
+ Committed TPS: 88,325 tx/s
+ Committed BPS: 45,222,616 B/s
+
+ + VALIDATOR LOAD DISTRIBUTION:
+ Validator 0: 8,239,041 tx (17.3%)
+ Validator 1: 8,533,118 tx (17.9%)
+ Validator 2: 8,208,754 tx (17.2%)
+ Validator 3: 3,240,755 tx (6.8%)
+ Validator 4: 3,239,343 tx (6.8%)
+ Validator 5: 3,242,991 tx (6.8%)
+ Validator 6: 3,241,533 tx (6.8%)
+ Validator 7: 3,242,595 tx (6.8%)
+ Validator 8: 3,244,529 tx (6.8%)
+ Validator 9: 3,252,470 tx (6.8%)
+
+ + PER-VALIDATOR COMMIT METRICS:
+ Validator    TPS (tx/s)    Mean (ms)    p95 (ms)    Misses
+ 0            15,261        80,091       144,407     0
+ 1            15,806        76,292       131,507     0
+ 2            15,205        79,712       144,700     0
+ 3            6,003         2,016        2,531       0
+ 4            6,000         2,121        2,626       0
+ 5            6,007         2,082        2,527       0
+ 6            6,004         2,056        2,586       0
+ 7            6,006         2,044        2,553       0
+ 8            6,010         2,136        2,578       0
+ 9            6,024         2,128        2,565       0
+ Overall      88,325        42,204 (wtd) 74,615 (wtd) 0
+
+ + PER-VALIDATOR QUORUM TIMING (ms):
+                    mean            p95             std      
+ Validator       delay    lat    delay    lat    delay    lat
+ 0              51,456     60   66,804    325   18,694    112
+ 1              49,851     58   63,530    309   16,899    108
+ 2              51,435     60   66,158    337   18,992    116
+ 3                  49    157      104    199       31     24
+ 4                  45    156       97    199       30     23
+ 5                  55    157      101    199       30     24
+ 6                  46    157      107    197       33     21
+ 7                  48    157      100    196       31     21
+ 8                  47    157       96    196       32     22
+ 9                  51    156      109    199       36     25
+
+ + PER-STAGE LATENCY BREAKDOWN (mean, ms):
+   Stage                            All
+   Client -> Worker:              6,056
+   Worker -> Batch seal:             79
+   Batch seal -> Quorum:         26,782
+   Quorum -> Processed:              10
+   Processed -> Header:             151
+   Header -> Certified:             208
+   Certified -> Committed:        1,431
+   Sum:                          34,716
+   (n=)                          98,906
+-----------------------------------------

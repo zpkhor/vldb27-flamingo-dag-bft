@@ -1,0 +1,8 @@
+cell	attempt	mean	frac_of_ref	cv	verdict
+n4_v_rate_imb90_r110000_run_1	1	114895	1.0113	0.135	FAIL
+n4_v_rate_imb90_r110000_run_1	2	112789	0.9928	0.076	PASS
+n4_v_rate_imb99_r110000_run_1	1	117123	1.0094	0.120	PASS
+n4_bw_f_rate_imb90_r110000_run_1	1	77399	1.0094	0.136	PASS
+n4_bw_f1_rate_imb90_r65000_run_1	1	65014	0.8482	0.029	FAIL
+n4_bw_f1_rate_imb90_r65000_run_1	2	65008	0.8481	0.268	FAIL
+n4_bw_f1_rate_imb90_r65000_run_1	3	64978	0.8477	0.029	FAIL

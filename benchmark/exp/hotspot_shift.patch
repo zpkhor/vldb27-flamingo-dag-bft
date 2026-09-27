@@ -1,0 +1,207 @@
+Hot-spot shift experiment: client-side load-shift hardcode.
+
+Reproduces benchmark/hotspot_shift.pdf, where the hot region moves from
+validator 0 to validator 1 mid-run and the LB algorithm has to re-converge.
+
+Origin: commits 5468daa ("script and results", April) and the hotspot block
+fixes from 3b4a41f, both on branch zp/hotspot-shift-v2, replayed onto
+zp/multi-client-lb. consensus/src/lib.rs is already byte-identical between the
+two branches, and this branch additionally carries cffe261 (2f+1 client
+confirmations to reroute), so nothing outside the client needs patching.
+
+Kept out of the branch because cloudlab_bench.py hardcodes the shift as
+"region 0 <-> region 1 at 2.5*WARMUP seconds", which is specific to this figure.
+
+Apply/run/unapply via: benchmark/exp/run_hotspot_shift.sh
+
+diff --git a/benchmark/benchmark/cloudlab_bench.py b/benchmark/benchmark/cloudlab_bench.py
+index b1fc66a..64f0cf4 100644
+--- a/benchmark/benchmark/cloudlab_bench.py
++++ b/benchmark/benchmark/cloudlab_bench.py
+@@ -523,6 +523,20 @@ class CloudLabBench:
+             weight_sum = sum(weights)
+             balanced_rate = math.ceil(rate / good_nodes)
+ 
++            # Pre-compute hotspot shift parameters (node 0 → node 1 at 2.5x warmup).
++            shift_at_secs = None
++            hot_rate_for_shift = None
++            low_rate_for_shift = None
++            if self.hotspot_shift:
++                assert self.rate_weights is not None, "HOTSPOT_SHIFT requires RATE_WEIGHTS"
++                assert good_nodes >= 2, "HOTSPOT_SHIFT requires at least 2 nodes"
++                assert len(set(weights[1:])) == 1, (
++                    f"HOTSPOT_SHIFT expects weights[1..] to be equal, got {weights}"
++                )
++                shift_at_secs = 2.5 * self.warmup
++                hot_rate_for_shift = math.ceil(rate * weights[0] / weight_sum)
++                low_rate_for_shift = math.ceil(rate * weights[1] / weight_sum)
++
+             client_commands = []
+             for i in range(good_nodes):
+                 validator_rate = math.ceil(rate * weights[i] / weight_sum)
+@@ -533,6 +547,13 @@ class CloudLabBench:
+                     exec_reply_addr = f'{v_ips[i]}:{self.BASE_PORT + 9000}'
+                     exec_reply_flag = f' --execution-reply-addr {exec_reply_addr}'
+ 
++                shift_flag = ''
++                if self.hotspot_shift:
++                    if i == 0:
++                        shift_flag = f' --shift-at-secs {shift_at_secs} --post-shift-rate {low_rate_for_shift}'
++                    elif i == 1:
++                        shift_flag = f' --shift-at-secs {shift_at_secs} --post-shift-rate {hot_rate_for_shift}'
++
+                 cmd = (
+                     f'ulimit -n 65536 && ./benchmark_client --size {self.tx_size} '
+                     f'--rate {validator_rate} --balanced-rate {balanced_rate} '
+@@ -540,7 +561,7 @@ class CloudLabBench:
+                     f'{ar_args} '
+                     f'--reply-addr {reply_addr} --own-validator {names[i]} '
+                     f'{vw_args}{rr_flag}{no_send_flag}{zipf_flag}{exec_reply_flag}{e_skew_flag}'
+-                    f' --rampup-secs {self.warmup}'
++                    f' --rampup-secs {self.warmup}{shift_flag}'
+                 )
+                 client_commands.append(cmd)
+ 
+diff --git a/benchmark/benchmark/config.py b/benchmark/benchmark/config.py
+index 60cc287..5143e5f 100644
+--- a/benchmark/benchmark/config.py
++++ b/benchmark/benchmark/config.py
+@@ -447,6 +447,7 @@ class BenchParameters:
+                     )
+             self.e_skew_weights = json.get('e_skew_weights', None)
+             self.warmup = int(json.get('warmup', 0))
++            self.hotspot_shift = bool(json.get('hotspot_shift', False))
+             self.num_accounts = int(json.get('num_accounts', 1_000_000))
+         except KeyError as e:
+             raise ConfigError(f'Malformed bench parameters: missing key {e}')
+diff --git a/benchmark/fabfile.py b/benchmark/fabfile.py
+index 869b577..42f920a 100644
+--- a/benchmark/fabfile.py
++++ b/benchmark/fabfile.py
+@@ -255,6 +255,7 @@ def cloudlab(ctx, debug=False,
+     if round_robin or routing_mode == 'baseline':
+         baseline = True
+     in_memory_store = os.environ.get('IN_MEMORY_STORE', '0') == '1'
++    hotspot_shift = os.environ.get('HOTSPOT_SHIFT', '0') == '1'
+     bench_params = {
+         'faults': 0,
+         'nodes': nodes,
+@@ -266,6 +267,7 @@ def cloudlab(ctx, debug=False,
+         'e_skew_weights': e_skew_weights,
+         'account_weights': account_weights,
+         'warmup': warmup,
++        'hotspot_shift': hotspot_shift,
+         'num_accounts': num_accounts,
+     }
+     num_executors = int(os.environ.get('NUM_EXECUTORS', 0))
+diff --git a/node/src/benchmark_client.rs b/node/src/benchmark_client.rs
+index bb7a90a..31bb45c 100644
+--- a/node/src/benchmark_client.rs
++++ b/node/src/benchmark_client.rs
+@@ -53,6 +53,8 @@ async fn main() -> Result<()> {
+         .args_from_usage("--executor-skew-weights=[WEIGHTS] 'Comma-separated skew weights per executor sub-range within each validator (default: equal)'")
+         .args_from_usage("--rampup-secs=[INT] 'Ramp-up duration in seconds (default 5)'")
+         .args_from_usage("--start-at=[FLOAT] 'Unix timestamp (seconds) to begin sending'")
++        .args_from_usage("--shift-at-secs=[FLOAT] 'Seconds after start when rate shifts (optional)'")
++        .args_from_usage("--post-shift-rate=[INT] 'Rate (tx/s) after the shift (required if --shift-at-secs set)'")
+         .setting(AppSettings::ArgRequiredElseHelp)
+         .get_matches();
+ 
+@@ -161,6 +163,23 @@ async fn main() -> Result<()> {
+         .transpose()
+         .context("--start-at must be a float (Unix timestamp)")?;
+ 
++    let shift_at_secs: Option<f64> = matches
++        .value_of("shift-at-secs")
++        .map(|x| x.parse::<f64>())
++        .transpose()
++        .context("--shift-at-secs must be a float")?;
++
++    let post_shift_rate: Option<u64> = matches
++        .value_of("post-shift-rate")
++        .map(|x| x.parse::<u64>())
++        .transpose()
++        .context("--post-shift-rate must be a non-negative integer")?;
++
++    assert!(
++        shift_at_secs.is_none() == post_shift_rate.is_none(),
++        "--shift-at-secs and --post-shift-rate must both be set or both absent"
++    );
++
+     let own_validator: PublicKey = PublicKey::decode_base64(
+         matches.value_of("own-validator").unwrap()
+     ).context("Invalid --own-validator public key")?;
+@@ -262,6 +281,8 @@ async fn main() -> Result<()> {
+         executor_skew_weights,
+         rampup_secs,
+         start_at,
++        shift_at_secs,
++        post_shift_rate,
+     };
+ 
+     // Wait for all nodes to be online and synchronized.
+@@ -291,6 +312,8 @@ struct Client {
+     executor_skew_weights: Vec<f64>,
+     rampup_secs: u64,
+     start_at: Option<f64>,
++    shift_at_secs: Option<f64>,
++    post_shift_rate: Option<u64>,
+ }
+ 
+ impl Client {
+@@ -416,6 +439,8 @@ impl Client {
+             total_num_accounts,
+             self.rampup_secs,
+             self.start_at,
++            self.shift_at_secs,
++            self.post_shift_rate,
+         ).await
+     }
+ 
+@@ -450,6 +475,8 @@ async fn send_shard(
+     total_num_accounts: u64,
+     rampup_secs: u64,
+     start_at: Option<f64>,
++    shift_at_secs: Option<f64>,
++    post_shift_rate: Option<u64>,
+ ) -> Result<()> {
+ 
+     const PRECISION: u64 = 20;
+@@ -468,6 +495,9 @@ async fn send_shard(
+     tokio::pin!(interval);
+     let mut total_sent = 0u64;
+     let mut burst_count = 0u64;
++    let shift_ticks: Option<u64> = shift_at_secs.map(|s| (s * PRECISION as f64) as u64);
++    let mut shift_offset: u64 = 0;
++    let mut shifted = false;
+ 
+     let sorted_validators: Vec<PublicKey> = {
+         let mut keys: Vec<PublicKey> = validator_senders.keys().copied().collect();
+@@ -510,11 +540,26 @@ async fn send_shard(
+         interval.as_mut().tick().await;
+         let now = Instant::now();
+ 
++        // Detect hot-spot shift: record total_sent at the shift tick for continuous offset.
++        if !shifted {
++            if let Some(st) = shift_ticks {
++                if counter >= st {
++                    shift_offset = total_sent;
++                    shifted = true;
++                    // NOTE: This log entry is used to compute performance.
++                    info!("Hot spot shifted region {}", region_id);
++                }
++            }
++        }
++
+         // Warmup phase 1 (first 1/10): ramp balanced_rate from 0 using quadratic.
+         // Warmup phase 2 (last 2/3): hold steady at balanced_rate.
+         // After warmup: switch to configured rate (rate_weights applied).
+         // Offsets ensure total_sent is continuous at both transitions.
+-        let next_total = if rampup_ticks > 0 && counter < ramp1_ticks {
++        // Phase 4 (post-shift): if --shift-at-secs set, switch to post_shift_rate.
++        let next_total = if shifted {
++            shift_offset + post_shift_rate.unwrap() * (counter + 1 - shift_ticks.unwrap()) / PRECISION
++        } else if rampup_ticks > 0 && counter < ramp1_ticks {
+             balanced_rate * (counter + 1) * (counter + 1) / (2 * ramp1_ticks * PRECISION)
+         } else if rampup_ticks > 0 && counter < rampup_ticks {
+             let offset1 = balanced_rate * ramp1_ticks / (2 * PRECISION);
